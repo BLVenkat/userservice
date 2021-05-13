@@ -1,0 +1,33 @@
+spring:
+  profiles: development
+  datasource:
+    url: jdbc:mysql://${dbhost}:3306/${database}?useSSL=false
+    username: root
+    password: root
+aws:
+  s3:
+    bucket: ${bucketname}
+    access: ${accesskey}
+    secret: ${secretkey}
+    region: ${region}
+server:
+  port: 8080
+
+---
+spring:
+  profiles: staging
+  datasource:
+    url: jdbc:mysql://${dbhost}:3306/${database}?useSSL=false
+    username: ${dbuser}
+    password: ${dbpassword}
+server:
+  port: 8080
+---
+spring:
+  profiles: production
+  datasource:
+    url: jdbc:mysql://${dbhost}:3306/${database}?useSSL=false
+    username: ${dbuser}
+    password: ${dbpassword}
+server:
+  port: 8080
